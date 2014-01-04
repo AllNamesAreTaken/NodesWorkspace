@@ -1,0 +1,7 @@
+package com.wdh.managers;
+
+import gamestates.GameState;
+
+public class GameStateManager {
+	private GameState gameState;
+}

@@ -1,0 +1,36 @@
+package gamestates;
+
+import com.wdh.managers.GameStateManager;
+
+public class PlayState extends GameState{
+	
+	public PlayState(GameStateManager gsm) {
+		super(gsm);
+		init();
+	}
+
+	@Override
+	public void init() {
+		
+	}
+
+	@Override
+	public void update(float dt) {
+		System.out.println("UPDATE MOFO");
+	}
+
+	@Override
+	public void draw() {
+		
+	}
+
+	@Override
+	public void handleInput() {
+		
+	}
+
+	@Override
+	public void dispose() {
+		
+	}
+}

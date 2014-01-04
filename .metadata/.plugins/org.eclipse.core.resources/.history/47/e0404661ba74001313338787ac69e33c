@@ -1,0 +1,9 @@
+package gamestates;
+
+import com.wdh.managers.GameStateManager;
+
+public abstract class GameState {
+	protected GameStateManager gsm;
+	
+	protected 
+}

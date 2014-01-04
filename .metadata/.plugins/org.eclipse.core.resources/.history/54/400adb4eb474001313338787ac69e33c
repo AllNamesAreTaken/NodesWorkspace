@@ -1,0 +1,18 @@
+package com.wdh.managers;
+
+import com.badlogic.gdx.InputAdapter;
+
+public class GameInputProcessor extends InputAdapter{
+	
+	public boolean keyDown(int k) {
+		if(k == Keys.UP) {
+			GameKeys.setKey(GameKeys.UP, true);
+		}
+		return true;
+	}
+	
+	public boolean keyUp(int k) {
+		GameKeys.setKey(k, false);
+		return true;
+	}
+}

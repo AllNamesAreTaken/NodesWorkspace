@@ -1,0 +1,16 @@
+package com.wdh.entities;
+
+public class Player extends GameObject{
+	
+	private boolean left;
+	private boolean right;
+	private boolean up;
+	
+	private float maxSpeed;
+	private float acceleration;
+	private float deceleration;
+	
+	public Player() {
+		x = Game.
+	}
+}

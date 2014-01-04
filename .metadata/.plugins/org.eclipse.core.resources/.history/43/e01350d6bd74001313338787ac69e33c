@@ -1,0 +1,13 @@
+package com.wdh.entities;
+
+public class GameObject {
+
+	protected float x;
+	protected float y;
+	
+	protected float dx;
+	protected float dy;
+	
+	protected float radians;
+	protected float speed;
+}

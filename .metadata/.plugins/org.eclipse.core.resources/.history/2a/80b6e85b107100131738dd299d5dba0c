@@ -1,0 +1,165 @@
+package com.wdh.nodes;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Circle;
+import com.badlogic.gdx.math.Vector2;
+
+public class Node{
+	private Texture image;
+	private HitCircle hit;
+	private double health;
+	private double sthealth;
+	private double lastHit;
+	private Vector2 velocity;
+	private Vector2 acceleration;
+	private double mass;
+	
+	public Node(int hth) {
+		sthealth = hth;
+		health = hth;
+		
+		hit = new HitCircle();
+		updateImage();
+		initializeVelocity();
+		ranPos();
+		
+		hit.setRadius(image.getHeight());
+	}
+	
+	public Node(float x, float y, int hth) {
+		sthealth = hth;
+		health = hth;
+		
+		hit = new HitCircle();
+		updateImage();
+		initializeVelocity();
+		hit.setX(x);
+		hit.setY(y);
+		
+		hit.setRadius(image.getHeight());
+	}
+	
+	public void draw(SpriteBatch batch) {
+		//draw(The Picture, 
+		//location is at Hitbox x minus half diameter,
+		//location is at Hitbox y minus half diameter,
+		//width is diameter, height is diameter
+		batch.draw(image, hit.getX() - (hit.getRadius()), hit.getY() - (hit.getRadius()), hit.getRadius() * 2, hit.getRadius() * 2);
+	}
+	
+	public boolean contains(float x, float y) {
+		return hit.contains(x, y);
+	}
+	
+	public void ranPos() {
+		hit.setX((float) (Math.random() * NodesGame.resW));
+		hit.setY((float) (Math.random() * NodesGame.resH));
+	}
+	
+	public void ranPos(float x1, float x2, float y1, float y2) {
+		hit.setX((float) (Math.random() * (x2 - x1)) + x1);
+		hit.setY((float) (Math.random() * (y2 - y1)) + y1);
+	}
+	
+	public void setX(float x) {
+		hit.setX(x);
+	}
+	
+	public void setY(float y) {
+		hit.setY(y);
+	}
+	
+	public void setRadius(float r) {
+		if(r > 80) {
+			r = r % 80;
+		}
+		else if(r < 20) {
+			r = Math.abs(r) + 20;
+		}
+		hit.setRadius(Math.abs(r));
+	}
+	
+	public double getHealth() {
+		return health;
+	}
+	
+	public void setHealth(int x) {
+		if(NodesGame.currTime - lastHit < .5) {
+			return;
+		}
+		updateImage();
+		health = x;
+		lastHit = NodesGame.currTime;
+	}
+	
+	public void subHealth(int x) {
+		if(NodesGame.currTime - lastHit < .5) {
+			return;
+		}
+		health = health - x;
+		updateImage();
+		lastHit = NodesGame.currTime;
+		hit.setRadius(hit.getRadius() + 1);
+	}
+	
+	public double getLastUsed() {
+		return lastHit;
+	}
+	
+	public void update(SpriteBatch batch) {
+		updateImage();
+		updatePosition();
+		updateVelocity();
+		draw(batch);
+	}
+	
+	private void updateVelocity() {
+		if(contains(hit.getX(),hit.getY())) {
+			velocity.set(velocity.x * -1, velocity.y);
+		}
+		if(hit.getY() > 600 || hit.getY() < 0) {
+			velocity.set(velocity.x, velocity.y * -1);
+		}
+	}
+	
+	private void updatePosition() {
+		setX(hit.getX() + (velocity.x * Gdx.graphics.getDeltaTime()));
+		setY(hit.getY() + (velocity.y * Gdx.graphics.getDeltaTime()));
+	}
+	
+	public void initializeVelocity() {
+		int fx = (int) (Math.random() * 2);
+		int fy = (int) (Math.random() * 2);
+		if(fx == 0) {
+			fx = -1;
+		}
+		if(fy == 0) {
+			fy = -1;
+		}
+		velocity = new Vector2(((float)Math.random() * 30) + (20*fx), ((float)Math.random() * 10)+(20*fy));
+	}
+
+	public void updateImage() {
+		if(health <= 0) {
+			image = new Texture(Gdx.files.internal("h25.png"));
+			return;
+		}
+		int rat = (int) ((health / sthealth) * 100);
+		
+		if(rat > 90) {
+			image = new Texture(Gdx.files.internal("h100.png"));
+		}
+		else if(((health / sthealth) * 100) > 50) {
+			image = new Texture(Gdx.files.internal("h75.png"));
+		}
+		else {
+			image = new Texture(Gdx.files.internal("h25.png"));
+		}
+	}
+	
+	public void dispose() {
+		image.dispose();
+	}
+}

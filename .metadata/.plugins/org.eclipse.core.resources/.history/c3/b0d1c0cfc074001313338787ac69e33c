@@ -1,0 +1,43 @@
+package gamestates;
+
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.wdh.entities.Player;
+import com.wdh.managers.GameStateManager;
+
+public class PlayState extends GameState{
+	
+	private ShapeRenderer sr;
+	
+	private Player player;
+	
+	public PlayState(GameStateManager gsm) {
+		super(gsm);
+	}
+
+	@Override
+	public void init() {
+		sr = new ShapeRenderer();
+		
+		player = new Player();
+	}
+
+	@Override
+	public void update(float dt) {
+		
+	}
+
+	@Override
+	public void draw() {
+		
+	}
+
+	@Override
+	public void handleInput() {
+		
+	}
+
+	@Override
+	public void dispose() {
+		
+	}
+}

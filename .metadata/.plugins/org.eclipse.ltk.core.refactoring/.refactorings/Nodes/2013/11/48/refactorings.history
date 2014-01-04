@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.wdh.nodes.Circle&apos; to &apos;HitCircle&apos;&#x0D;&#x0A;- Original project: &apos;Nodes&apos;&#x0D;&#x0A;- Original element: &apos;com.wdh.nodes.Circle&apos;&#x0D;&#x0A;- Renamed element: &apos;com.wdh.nodes.HitCircle&apos;&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Circle&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.wdh.nodes{Circle.java[Circle" matchStrategy="1" name="HitCircle" qualified="false" references="false" similarDeclarations="false" stamp="1385273258588" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,5 @@
+package com.wdh.entities;
+
+public class GameObject {
+
+}

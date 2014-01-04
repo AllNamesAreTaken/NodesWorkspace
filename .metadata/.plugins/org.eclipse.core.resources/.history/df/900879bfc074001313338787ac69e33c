@@ -1,0 +1,39 @@
+package gamestates;
+
+import com.wdh.managers.GameStateManager;
+
+public class PlayState extends GameState{
+	
+	private ShapeRenderer sr;
+	
+	private Player player;
+	
+	public PlayState(GameStateManager gsm) {
+		super(gsm);
+	}
+
+	@Override
+	public void init() {
+		
+	}
+
+	@Override
+	public void update(float dt) {
+		
+	}
+
+	@Override
+	public void draw() {
+		
+	}
+
+	@Override
+	public void handleInput() {
+		
+	}
+
+	@Override
+	public void dispose() {
+		
+	}
+}

@@ -1,0 +1,15 @@
+package com.wdh.managers;
+
+import com.badlogic.gdx.InputAdapter;
+
+public class GameInputProcessor extends InputAdapter{
+	
+	public boolean keyDown(int k) {
+		GameKeys.setKey(k, true);
+		return true;
+	}
+	
+	public boolean keyUp(int k) {
+		return true;
+	}
+}

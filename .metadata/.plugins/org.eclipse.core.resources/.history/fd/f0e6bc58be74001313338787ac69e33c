@@ -1,0 +1,28 @@
+package com.wdh.entities;
+
+import com.wdh.nodes.NodesGame;
+
+public class Player extends GameObject{
+	
+	private boolean left;
+	private boolean right;
+	private boolean up;
+	
+	private float maxSpeed;
+	private float acceleration;
+	private float deceleration;
+	
+	public Player() {
+		x = NodesGame.resW / 2;
+		y = NodesGame.resH / 2;
+		
+		maxSpeed = 300;
+		acceleration = 200;
+		deceleration = 10;
+		
+		shapex = new float[4];
+		shpaey = new float[4];
+		
+		
+	}
+}
