@@ -1,0 +1,69 @@
+package com.wdh.nodes;
+
+import java.util.ArrayList;
+
+import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.wdh.managers.GameInputProcessor;
+import com.wdh.managers.GameKeys;
+import com.wdh.managers.GameStateManager;
+
+public class NodesGame implements ApplicationListener {
+	
+	public static int resW = 800;
+	public static int resH = 600;
+	
+	public static float currTime = 0;
+	
+	private GameStateManager gsm;
+
+	OrthographicCamera camera;
+	SpriteBatch batch;
+	
+	@Override
+	public void create() {
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, resW, resH);
+		batch = new SpriteBatch();
+		
+		Gdx.input.setInputProcessor(
+				new GameInputProcessor()
+		);
+		
+		gsm = new GameStateManager();
+	}
+
+	@Override
+	public void render() {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
+		gsm.update(Gdx.graphics.getDeltaTime());
+		gsm.draw();
+		
+		GameKeys.update();
+	}
+
+	@Override
+	public void dispose() {
+		batch.dispose();
+	}
+
+	@Override
+	public void resize(int width, int height) {
+	}
+
+	@Override
+	public void pause() {
+	}
+
+	@Override
+	public void resume() {
+	}
+}
