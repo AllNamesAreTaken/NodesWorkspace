@@ -67,10 +67,10 @@ public class Player extends GameObject{
 			dx -= (dx / vec) * deceleration * dt;
 			dy -= (dy / vec) * deceleration * dt;
 		}
-//		if(vec > maxSpeed) {
-//			dx -= (dx / vec) * maxSpeed * dt;
-//			dy -= (dy / vec) * maxSpeed * dt;
-//		}
+		if(vec > maxSpeed) {
+			dx -= (dx / vec) * maxSpeed * dt;
+			dy -= (dy / vec) * maxSpeed * dt;
+		}
 		
 		x += dx * dt;
 		y += dy * dt;
